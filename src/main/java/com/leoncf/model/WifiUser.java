@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name="WIFI_SCAN_TERM")
-public class ScanLog {
+public class WifiUser {
     @Id
     @GeneratedValue
     private long id;
