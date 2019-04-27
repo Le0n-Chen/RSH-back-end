@@ -1,12 +1,12 @@
-package com.leoncf.model;
+package com.leoncf.network.model;
 import lombok.Data;
 
 import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name="WIFI_SCAN_TERM")
-public class WifiUser {
+@Table(name="NETWORK_SCAN_TERM")
+public class UserLog {
     @Id
     @GeneratedValue
     private long id;
