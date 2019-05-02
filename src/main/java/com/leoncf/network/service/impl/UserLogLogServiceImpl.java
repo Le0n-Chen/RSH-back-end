@@ -6,9 +6,9 @@ import com.leoncf.network.service.UserLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.leoncf.network.utils.StrUtils;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +33,13 @@ public class UserLogLogServiceImpl implements UserLogService {
         String pattern = "HH:mm:ss";
         DateFormat df = new SimpleDateFormat(pattern);
         Map<Object, Integer> result= new LinkedHashMap<>();
+
+        for( int i = 1; i <= 24; i++) {
+            if(!result.containsKey(i + ":00:00") && !result.containsKey(StrUtils.dightFill(i, 2) + ":00:00")) {
+                result.put(StrUtils.dightFill(i, 2) + ":00:00", 0);
+            }
+        }
+
         for( int j = 0 ; j < list.size() ; j++) { // time convert to string
             list.set(j, df.format(list.get(j)));
         }
@@ -44,6 +51,8 @@ public class UserLogLogServiceImpl implements UserLogService {
                result.put(list.get(i), 1);
             }
         }
+
+
 
         return result;
     }
