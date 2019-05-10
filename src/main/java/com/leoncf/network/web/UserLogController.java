@@ -30,4 +30,5 @@ public class UserLogController {
         return this.userLogService.findUserNumByDay(day);
     }
 
+
 }

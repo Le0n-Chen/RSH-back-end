@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name="NETWORK_SCAN_TERM")
 public class UserLog {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(nullable = false)
     private String date;

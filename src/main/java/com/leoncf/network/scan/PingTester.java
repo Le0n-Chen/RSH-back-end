@@ -1,7 +1,6 @@
 package com.leoncf.network.scan;
 
 import java.net.InetAddress;
-import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
@@ -16,8 +15,8 @@ public class PingTester {
     public PingTester() {
         // 首先创建一个队列用于存储所有ip地址
         allIp = new LinkedList<String>();
-        for (int i = 0; i < 100; i++) {
-            allIp.offer("192.168.88." + i);
+        for (int i = 0; i < 256; i++) {
+            allIp.offer("192.168.199." + i);
 //            for (int j = 0; j < 256; j++) {
 //                allIp.offer("192.168."+i+"."+j);
 //            }
@@ -84,13 +83,3 @@ public class PingTester {
         }
     }
 }
-//
-//
-//        System.out.println("192.168.1.187对应网卡的MAC是:");
-//
-//        NetworkInterface ne=NetworkInterface.getByInetAddress(InetAddress.getByName("192.168.1.187"));
-//
-//        byte[]mac=ne.getHardwareAddress();
-//
-//        String mac_s=hexByte(mac[0])+":"+hexByte(mac[1])+":"+ hexByte(mac[2])+":"+hexByte(mac[3])+":"+ hexByte(mac[4])+":"+hexByte(mac[5]);System.out.println(mac_s);
-

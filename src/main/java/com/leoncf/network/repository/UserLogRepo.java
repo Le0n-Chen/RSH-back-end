@@ -11,11 +11,9 @@ public interface UserLogRepo extends JpaRepository<UserLog, Long> {
 
     UserLog findById(long id);
 
-    List<UserLog> findByDate(String date);
-
     void deleteById(Long id);
 
-    @Query(value = "select time from NETWORK_SCAN_TERM where date = :date order by time ASC ", nativeQuery = true)
+    @Query(value = "SELECT time FROM NETWORK_SCAN_TERM WHERE date = :date ORDER BY time ASC ", nativeQuery = true)
     List<String> findByDateASC(@Param("date") String date);
 
 
