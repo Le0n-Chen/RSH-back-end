@@ -12,6 +12,7 @@ import com.leoncf.network.scan.PingTester;
 import com.leoncf.network.service.UserLogService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import  org.springframework.scheduling.annotation.Scheduled;
 import  org.springframework.stereotype.Component;
 
@@ -24,12 +25,14 @@ public class ScheduledTasks {
     private  static final SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
     private  static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
+    @Value("${network.scan.address}")
+    private String scanAddr;
     @Resource
     UserLogService userLogService;
 
     @Scheduled(fixedRate = 1800000)
     public void reportCurrent(){
-        PingTester tester = new PingTester();
+        PingTester tester = new PingTester(scanAddr);
         List<Map<String, String>> scanResult = tester.startPing();
         Date nowData = new Date();
         String date = dateFormat.format(nowData);

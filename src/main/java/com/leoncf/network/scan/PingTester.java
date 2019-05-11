@@ -1,5 +1,7 @@
 package com.leoncf.network.scan;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.util.*;
@@ -12,11 +14,12 @@ public class PingTester {
     private int fetchedNum = 0; // 已经取得的任务数量，每次从队列中取一个ip就加1
     private List<Map<String, String>> result =  new ArrayList<>();
 
-    public PingTester() {
+
+    public PingTester(String scanAddr) {
         // 首先创建一个队列用于存储所有ip地址
         allIp = new LinkedList<String>();
         for (int i = 0; i < 256; i++) {
-            allIp.offer("192.168.199." + i);
+            allIp.offer(scanAddr + i);
 //            for (int j = 0; j < 256; j++) {
 //                allIp.offer("192.168."+i+"."+j);
 //            }
